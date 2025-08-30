@@ -14,11 +14,11 @@ namespace AutoVendor.Data.Models
             this.Id = Guid.NewGuid();
         }
 
-        [Comment("Name of the brand")]
-        public string Name { get; set; } = null!;
-
         [Comment("Identifier of brand")]
         public Guid Id { get; set; }
+
+        [Comment("Name of the brand")]
+        public string Name { get; set; } = null!;
 
         [Comment("One brand can have many products")]
         public virtual ICollection<Product> Products { get; set; } = new HashSet<Product>();

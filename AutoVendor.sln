@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoVendor", "AutoVendor\Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoVendor.Data", "AutoVendor.Data\AutoVendor.Data.csproj", "{4BAFED90-D43E-4C7C-913E-2DC2C1D70DB8}"
 	ProjectSection(ProjectDependencies) = postProject
-		{3965201E-A0BD-4C60-813A-B54A4273B391} = {3965201E-A0BD-4C60-813A-B54A4273B391}
 		{7D3982F2-4C0E-4C06-BBCB-26DAA10261C0} = {7D3982F2-4C0E-4C06-BBCB-26DAA10261C0}
 	EndProjectSection
 EndProject

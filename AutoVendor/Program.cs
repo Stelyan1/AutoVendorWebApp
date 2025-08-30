@@ -1,3 +1,6 @@
+using AutoVendor.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AutoVendor
 {
     public class Program
@@ -8,6 +11,9 @@ namespace AutoVendor
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<AutoVendorDbContext>(options =>
+             options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServer")));
 
             var app = builder.Build();
 

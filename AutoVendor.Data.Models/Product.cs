@@ -14,32 +14,20 @@ namespace AutoVendor.Data.Models
             this.Id = Guid.NewGuid();
         }
 
-        [Comment("Name of the Product")]
-        public string Name { get; set; } = null!;
-
         [Comment("Identifier of the product")]
         public Guid Id { get; set; }
+
+        [Comment("Name of the Product")]
+        public string Name { get; set; } = null!;
 
         [Comment("Description about the product")]
         public string Description { get; set; } = null!;
 
-        [Comment("Based on the product this can be used as additional info")]
-        public string MoreInfo1 { get; set; } = string.Empty;
+        [Comment("Price of the product")]
+        public decimal Price { get; set; }
 
-        [Comment("Based on the product this can be used as additional info")]
-        public string MoreInfo2 { get; set; } = string.Empty;
-
-        [Comment("Based on the product this can be used as additional info")]
-        public string MoreInfo3 { get; set; } = string.Empty;
-
-        [Comment("Based on the product this can be used as additional info")]
-        public string MoreInfo4 { get; set; } = string.Empty;
-
-        [Comment("Based on the product this can be used as additional info")]
-        public string MoreInfo5 { get; set; } = string.Empty;
-
-        [Comment("Based on the product this can be used as additional info")]
-        public string MoreInfo6 { get; set; } = string.Empty;
+        [Comment("Product image")]
+        public string ImageUrl { get; set; } = null!;
 
         [Comment("Category of the Product")]
         public Guid BelongToCategory { get; set; }
@@ -50,7 +38,8 @@ namespace AutoVendor.Data.Models
         public virtual Brand Brand { get; set; } = null!;
 
         [Comment("Can be applied to many car models")]
-        public virtual ICollection<BrandModel> BrandModels { get; set; } = new HashSet<BrandModel>();
+        public Guid AppliableTo { get; set; }
+        public virtual BrandModel BrandModel { get; set; } = null!;
 
     }
 }
