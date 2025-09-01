@@ -3,53 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AutoVendor</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/AutoVendor.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AutoVendor</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="BrandModel" asp-action="Index">Models</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    
+    <!-- Слайдшоу -->
+    <header class="top-banner">
+        <div class="slideshow">
+            <img src="https://wallpapers.com/images/hd/1920x1080-bmw-olutqd2j9v4jugb3.jpg" alt="Car Banner">
+            <img src="https://www.westcoastexoticcars.com/imagetag/698/main/l/Used-2012-Mercedes-Benz-C63-Black-Series-1617045868.jpg" alt="Car Banner2">
+            <img src="https://cdn.bmwblog.com/wp-content/uploads/2017/08/2018-bmw-5-series-ac-schnitzer.jpg" alt="Car 3">
+            <img src="https://issimi-vehicles-cdn.b-cdn.net/publicamlvehiclemanagement/VehicleDetails/642/timestamped-1726605103699-2021%20Mercedes-Benz%20C63%20S_000001.jpg?width=3840&quality=75" alt="Car 4">
+        </div>
     </header>
+
+    <!-- Меню -->
+    <nav class="main-nav">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+        <a href="#">Contacts</a>
+        <a href="#">Delivery</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <a href="#">About Us</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="BrandModel" asp-action="Index">Models</a>
+        <a href="#">Cart</a>
+
+        <div class="register-login">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </nav>
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - AutoVendor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

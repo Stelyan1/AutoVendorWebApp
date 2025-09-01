@@ -1,8 +1,58 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using AutoVendor.Data.Models
+@model IEnumerable<AutoVendor.Data.Models.Product>
+    
+<!DOCTYPE html>
+    <html lang="bg">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page</title>
+    </head>
+    <body>
+       
+        <!-- Останало съдържание -->
+        <main class="content">
+            <h1>Welcome to AutoVendor</h1>
+        </main>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        <h2 class="content">Featured Products</h2>
+        <!-- Продукти -->
+
+        <article class="article-products">
+            <section class="section-products">
+       
+                <div class="product">
+                    <img src="https://mobistatic3.focus.bg/mobile/photosorg/344/1/big/11755022733750344_CO.webp" alt="BMW M3" height="200" width="300">
+                    <h2>BMW M3</h2>
+                    <p>The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. It is known for its powerful engines, sharp handling, and sporty design.</p>
+                    <p>Price: $70,000</p>
+                    <button class="button-buy">BUY</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://dizzyriders.bg/uploads/thumbs/avtomobili/04_2022/MERC-1080x600.jpg" alt="C63" height="200" width="300">
+                    <h2>Mercedes-Benz C63 2012</h2>
+                    <p>The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. It is known for its powerful engines, sharp handling, and sporty design.</p>
+                    <p>Price $70,000</p>
+                    <button class="button-buy">BUY</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://mobistatic3.focus.bg/mobile/photosorg/344/1/big/11755022733750344_CO.webp" alt="BMW M3" height="200" width="300">
+                    <h2>BMW M3</h2>
+                    <p>The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. It is known for its powerful engines, sharp handling, and sporty design.</p>
+                    <p>Price: $70,000</p>
+                    <button class="button-buy">BUY</button>
+                </div>
+
+                <div class="product">
+                    <img src="https://mobistatic3.focus.bg/mobile/photosorg/344/1/big/11755022733750344_CO.webp" alt="BMW M3" height="200" width="300">
+                    <h2>BMW M3</h2>
+                    <p>The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M GmbH. It is known for its powerful engines, sharp handling, and sporty design.</p>
+                    <p>Price: $70,000</p>
+                    <button class="button-buy">BUY</button>
+                </div>
+        </article>
+
+    </body>
+</html>
