@@ -1,0 +1,21 @@
+﻿@using AutoVendor.Data.Models
+@model IEnumerable<AutoVendor.Data.Models.Category>
+
+
+<h1 class="text-center">All Categories</h1>
+
+<div class="container">
+	<div class="row">
+		@foreach (var category in Model)
+		{
+			<div class="col-md-4">
+				<div class="card mb-4 shadow-sm">
+					<img src="@category.ImageUrl" class="card-img-top" alt="@category.Name">
+					<div class="card-body">
+						<h5 class="card-title">@category.Name</h5>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>

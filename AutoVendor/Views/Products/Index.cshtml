@@ -1,0 +1,23 @@
+﻿@using AutoVendor.Data.Models
+@model IEnumerable<AutoVendor.Data.Models.Product>
+
+
+<h1 class="text-center">All Products</h1>
+
+<div class="container">
+	<div class="row">
+		@foreach (var product in Model)
+		{
+			<div class="col-md-4">
+				<div class="card mb-4 shadow-sm">
+					<img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+					<div class="card-body">
+						<h5 class="card-title">@product.Name</h5>
+						<h5 class="card-title">@product.Price BGN</h5>
+						<button class="active">Buy</button>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
