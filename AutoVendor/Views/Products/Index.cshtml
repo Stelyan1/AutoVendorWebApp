@@ -2,22 +2,143 @@
 @model IEnumerable<AutoVendor.Data.Models.Product>
 
 
-<h1 class="text-center">All Products</h1>
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Products Page</title>
+    <link rel="stylesheet" href="~/css/style2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --radius: 14px; }
+        body { padding: 0px; margin: 0; font-family: Arial, sans-serif; background: #ffffff; }
+    </style>
+</head>
+<body>
 
-<div class="container">
-	<div class="row">
-		@foreach (var product in Model)
-		{
-			<div class="col-md-4">
-				<div class="card mb-4 shadow-sm">
-					<img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
-					<div class="card-body">
-						<h5 class="card-title">@product.Name</h5>
-						<h5 class="card-title">@product.Price BGN</h5>
-						<button class="active">Buy</button>
-					</div>
-				</div>
-			</div>
-		}
-	</div>
-</div>
+    <section class="header">
+        <h1>Products</h1>
+    </section>
+
+    <section class="controls">
+        <!-- Search -->
+        <p class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button id="searchBtn" title="Search"><i class="fas fa-search"></i></button>
+        </p>
+
+        <!-- Filter -->
+        <div class="filter">
+            <button class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterMenu">
+                <i class="fa fa-filter"></i> Filter
+            </button>
+
+            <div class="filter-menu" id="filterMenu" aria-hidden="true">
+                <div class="field">
+                    <label>Model</label>
+                    <div class="chips">
+                        <label class="chip"><input type="checkbox" name="model" value="BMW" /> BMW</label>
+                        <label class="chip"><input type="checkbox" name="model" value="Mercedes-Benz" /> Mercedes-Benz</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="brandFilter">Brand</label>
+                    <select id="brandFilter">
+                        <option value="">All</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="priceFilter">Price</label>
+                    <select id="priceFilter">
+                        <option value="">All</option>
+                        <option value="lt50k">Under 50k €</option>
+                        <option value="50to100k">50k–100k €</option>
+                        <option value="gt100k">Over 100k €</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="sortFilter">Sort by price</label>
+                    <select id="sortFilter">
+                        <option value="">None</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+
+                <div class="actions">
+                    <button class="apply" id="applyFilters">Apply</button>
+                    <button class="clear" id="clearFilters">Clear</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <!-- Продуктите са статични, но имат data-атрибути за филтриране -->
+        @foreach(var product in Model)
+        {
+            <div class="product">
+                <h3>@product.Name</h3>
+                <div class="thumb">
+                    <img class="img" src=@product.ImageUrl/>
+                </div>
+                <p>Description: @product.Description</p>
+                <p><strong>Price: @product.Price.ToString("F2")</strong></p>
+                <button class="buy-btn">Buy</button>
+            </div>
+        }
+
+        <div class="product" data-model="BMW" data-brand="BMW" data-price="70000">
+            <h3>BMW M3</h3>
+            <div class="thumb">
+                <img src="https://bmw.scene7.com/is/image/BMW/g80_stage_dsk_fb?qlt=80&wid=1024&fmt=webp" alt="BMW M3" />
+            </div>
+            <p>Description: The new BMW M3 brings mid class comfort and a lot of high end power to the streets</p>
+            <p><strong>Price:</strong> 70,000 €</p>
+            <button class="buy-btn">Buy</button>
+        </div>
+
+        <div class="product" data-model="BMW" data-brand="BMW" data-price="35000">
+            <h3>BMW 320d</h3>
+            <div class="thumb">
+                <img src="https://www.greencarguide.co.uk/wp-content/uploads/2019/08/BMW-320d-001-low-res.jpeg" alt="BMW 3 Series" />
+            </div>
+            <p>Description: Efficient and comfy daily driver</p>
+            <p><strong>Price:</strong> 35,000 €</p>
+            <button class="buy-btn">Buy</button>
+        </div>
+
+        <div class="product" data-model="Mercedes-Benz" data-brand="Mercedes-Benz" data-price="55000">
+            <h3>Mercedes-Benz C 220d</h3>
+            <div class="thumb">
+                <img src="https://img.autotrader.co.za/13876194" alt="Mercedes C-Class" />
+            </div>
+            <p>Description: Premium interior and smooth ride</p>
+            <p><strong>Price:</strong> 55,000 €</p>
+            <button class="buy-btn">Buy</button>
+        </div>
+
+        <div class="product" data-model="Mercedes-Benz" data-brand="Mercedes-Benz" data-price="120000">
+            <h3>Mercedes-AMG E 63</h3>
+            <div class="thumb">
+                <img src="https://www.topgear.com/sites/default/files/2022/06/1-Mercedes-AMG-E-Class-Final-Edition.jpg" alt="Mercedes AMG E 63" />
+            </div>
+            <p>Description: Super sedan with massive power</p>
+            <p><strong>Price:</strong> 120,000 €</p>
+            <button class="buy-btn">Buy</button>
+        </div>
+    </section>
+
+    @section Scripts{
+        <script src="~/js/script.js" asp-append-version="true"></script>
+    }
+    
+</body>
+</html>

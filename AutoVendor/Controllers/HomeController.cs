@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using AutoVendor.Data;
 using AutoVendor.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,15 +8,20 @@ namespace AutoVendor.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AutoVendorDbContext dbContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AutoVendorDbContext dbContext)
         {
             _logger = logger;
+            this.dbContext = dbContext;
         }
 
+
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var products = this.dbContext.Products.ToList();
+            return View("~/Views/Home/Index.cshtml", products);
         }
 
         public IActionResult Privacy()
