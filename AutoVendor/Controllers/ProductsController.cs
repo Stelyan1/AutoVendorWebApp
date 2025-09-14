@@ -1,5 +1,7 @@
 ﻿using AutoVendor.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace AutoVendor.Controllers
 {
@@ -12,9 +14,14 @@ namespace AutoVendor.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var products = this.dbContext.Products.ToList();
+            var products = await dbContext.Products
+                .Include(p => p.Brand)
+                .Include(p => p.BrandModel)
+                .AsNoTracking()
+                .ToListAsync();
+            
             return View("~/Views/Products/Index.cshtml", products);
         }
     }

@@ -36,11 +36,23 @@
 
             <div class="filter-menu" id="filterMenu" aria-hidden="true">
                 <div class="field">
-                    <label>Model</label>
-                    <div class="chips">
-                        <label class="chip"><input type="checkbox" name="model" value="BMW" /> BMW</label>
-                        <label class="chip"><input type="checkbox" name="model" value="Mercedes-Benz" /> Mercedes-Benz</label>
-                    </div>
+                   <label>Search by your model</label>
+                       <div class="chips">
+                        @{
+                            var modelNames = Model
+                            .Where(p => p.BrandModel?.Name != null)
+                            .Select(p => p.BrandModel!.Name!)
+                            .Distinct()
+                            .OrderBy(n => n);
+                        }
+
+                        @foreach (var m in modelNames)
+                        {
+                            <label class="chip">
+                                <input type="checkbox" name="model" value="@m" /> @m
+                            </label>
+                        }
+                       </div>
                 </div>
 
                 <div class="field">
@@ -48,6 +60,13 @@
                     <select id="brandFilter">
                         <option value="">All</option>
                         <option value="BMW">BMW</option>
+                        @foreach (var name in Model.Where(p => p.Brand != null)
+                                                .Select(p => p.Brand!.Name)
+                                                .Distinct()
+                                                .OrderBy(n => n))
+                        {
+                            <option value="@name">@name</option>
+                        }
                         <option value="Mercedes-Benz">Mercedes-Benz</option>
                     </select>
                 </div>
@@ -82,15 +101,21 @@
     <!-- Products -->
     <section class="products" id="products">
         <!-- Продуктите са статични, но имат data-атрибути за филтриране -->
-        @foreach(var product in Model)
+       
+        @foreach (var product in Model)
         {
-            <div class="product">
+            <div class="product"
+                 data-model="@(product.BrandModel?.Name ?? "")"
+                 data-brand="@(product.Brand?.Name ?? "")"
+                 data-price="@product.Price.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)">
                 <h3>@product.Name</h3>
                 <div class="thumb">
-                    <img class="img" src=@product.ImageUrl/>
+                    <img class="img" src="@product.ImageUrl" alt="@product.Name" />
                 </div>
                 <p>Description: @product.Description</p>
-                <p><strong>Price: @product.Price.ToString("F2")</strong></p>
+                <p><strong>Price: @product.Price.ToString("F2") BGN</strong></p>
+                <p>@product.Brand?.Name</p>
+                <p>Appliable To: <strong>@product.BrandModel?.Name</strong></p>
                 <button class="buy-btn">Buy</button>
             </div>
         }
